@@ -1,12 +1,12 @@
 import os
 import tkinter as tk #Se importa tkinter y se le asigna el nombre de TK
-from tkinter import filedialog as FileDialog
+from tkinter import filedialog as FileSearch
 from tkinter import messagebox as Message
 import csv
 
 
 def leer_csv():
-    file_path = FileDialog.askopenfilename(
+    file_path = FileSearch.askopenfilename(
         title="Selecciona el archivo",
         filetypes=(("Archivos CSV", "*.csv*"),)
         )
@@ -31,37 +31,26 @@ def leer_csv():
     
     print("Prueba de botón")
 
-    
-
-
-
-##FALTA MOSTRAR EL TEXTO ORIGINAL
-##LUEGO DE ABRIR EL CSV GUARDAR SU CONTENIDO EN UNA VARIABLE
-##
 
 
 def cifradoCesar():
-    respuesta = "Imprimir cifrado cesar"
-    mostrarRpta.insert(tk.END, respuesta)
-    Message.showinfo("Cifrado Cesar", respuesta)##Mostrar el mensaje cifrado mediante un cuadro de dialogo
-
+    respuesta = "Imprimir cifrado cesar\n"
+    mostrarEncrypt.insert(tk.END, respuesta)
     print("Sirve el cifrado cesar")
     ##LUEGO DE PRESIONAR EL BOTON QUE LLAMA A LA FUNCIÓN DEBE CREAR UN ARCHIVO CSV  
 
+
+
 def cifradoAffline():
     respuesta = "Imprimir cifrado Affine\n"
-    mostrarRpta.insert(tk.END, respuesta)
-    nuevaVent = tk.Tk()
-    nuevaVent.title("Mensaje encriptado Affine")
-    nuevaVent.geometry("720x540")
-    respuesta = tk.Label(nuevaVent, text="El mensaje encryptado es %s" % respuesta) ##Mostrar mensaje abriendo una una ventana
+    mostrarEncrypt.insert(tk.END, respuesta)
     respuesta.pack()
-
     print("Sirve el cifrado Affline")
+
 
 def cifradoMezcla():
     respuesta = "Imprimir cifrado Mezcla"
-    mostrarRpta.insert(tk.END, respuesta)
+    mostrarEncrypt.insert(tk.END, respuesta)
     print("Sirve el cifrado Mezcla")
 
 
@@ -87,9 +76,28 @@ boton2.pack()
 boton3 = tk.Button(root,text="Buscar Cifrado Mezcla", command=cifradoMezcla)
 boton3.pack()
 
-mostrarRpta= tk.Text(root, height=100, width=100)
-mostrarRpta.pack()
+frame_rpta = tk.Frame(root)
+frame_rpta.pack(expand=True, fill=tk.BOTH)
+scrollbar_rpta_y = tk.Scrollbar(frame_rpta, orient=tk.VERTICAL)
+scrollbar_rpta_x = tk.Scrollbar(root, orient=tk.HORIZONTAL)
+mostrarRpta = tk.Text(frame_rpta, height=15, width=25, wrap=tk.NONE, yscrollcommand=scrollbar_rpta_y.set, xscrollcommand=scrollbar_rpta_x.set)
+scrollbar_rpta_y.config(command=mostrarRpta.yview)
+scrollbar_rpta_x.config(command=mostrarRpta.xview)
+mostrarRpta.pack(side=tk.LEFT, expand=True, fill=tk.BOTH)
+scrollbar_rpta_y.pack(side=tk.RIGHT, fill=tk.Y)
+scrollbar_rpta_x.pack(side=tk.BOTTOM, fill=tk.X)
 
+
+frame_encrypt = tk.Frame(root)
+frame_encrypt.pack(expand=True, fill=tk.BOTH)
+scrollbar_encrypt_y = tk.Scrollbar(frame_encrypt, orient=tk.VERTICAL)
+scrollbar_encrypt_x = tk.Scrollbar(root, orient=tk.HORIZONTAL)
+mostrarEncrypt = tk.Text(frame_encrypt, height=15, width=50, wrap=tk.NONE, yscrollcommand=scrollbar_encrypt_y.set, xscrollcommand=scrollbar_encrypt_x.set)
+scrollbar_encrypt_y.config(command=mostrarEncrypt.yview)
+scrollbar_encrypt_x.config(command=mostrarEncrypt.xview)
+mostrarEncrypt.pack(side=tk.LEFT, expand=True, fill=tk.BOTH)
+scrollbar_encrypt_y.pack(side=tk.RIGHT, fill=tk.Y)
+scrollbar_encrypt_x.pack(side=tk.BOTTOM, fill=tk.X)
 
 
 
