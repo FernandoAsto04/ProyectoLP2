@@ -1,7 +1,7 @@
 import string
-####Código del cifrado cesar hecha con funciones de alto orden y lambda
-alfabeto = list(string.ascii_lowercase)
 
+alfabeto = list(string.ascii_lowercase)
+####Código del cifrado cesar hecha con funciones de alto orden y lambda
 def desplazar_letra(letra, desplazamiento):
     if letra in alfabeto:
         indice_actual = alfabeto.index(letra)
@@ -11,12 +11,6 @@ def desplazar_letra(letra, desplazamiento):
         return letra
 
 def cifrar_cesar(arreglo, desplazamiento):
-    palabras = map(lambda palabra: ''.join(palabra), arreglo)
+    palabras = " ".join(arreglo)
     mensaje_cifrado = map(lambda letra: desplazar_letra(letra, desplazamiento), palabras)
     return ''.join(mensaje_cifrado)
-
-# Prueba de la función
-#mensaje = "hola mundo"
-#desplazamiento = 3
-#mensaje_cifrado = cifrar_cesar(mensaje, desplazamiento)
-#print(mensaje_cifrado)  # Salida: "krod pxqgr"

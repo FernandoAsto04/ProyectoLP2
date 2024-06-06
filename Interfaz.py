@@ -4,8 +4,10 @@ from tkinter import filedialog as FileSearch
 from tkinter import messagebox as Message
 import csv
 from cifCesar import cifrar_cesar
+from cifAffine import cifrar_affine
+from cifMezcla import cifrar_mezcla
 
-palabras = ["a"]
+palabras = []
 
 def leer_csv():
     file_path = FileSearch.askopenfilename(
@@ -28,38 +30,29 @@ def leer_csv():
 
             contador = contador + 1
 
-
-    
-    
-    print("Prueba de botón")
-    print(palabras)
-
+    #print("Prueba de botón")
+    #print(palabras)
 
 
 def cifradoCesar(mensaje):
-    respuesta = cifrar_cesar(mensaje, 3)
+    respuesta = "Cifrado Cesar: " + cifrar_cesar(mensaje, 3)
     mostrarEncrypt.insert(tk.END, respuesta)
     print("Sirve el cifrado cesar")
     ##LUEGO DE PRESIONAR EL BOTON QUE LLAMA A LA FUNCIÓN DEBE CREAR UN ARCHIVO CSV  
 
-
-
-def cifradoAffline():
-    respuesta = "Imprimir cifrado Affine\n"
+def cifradoAffline(mensaje):
+    respuesta = "\nCifrado Affine: " + cifrar_affine(mensaje,23,5)
     mostrarEncrypt.insert(tk.END, respuesta)
-    respuesta.pack()
-    print("Sirve el cifrado Affline")
+    print("Sirve el cifrado Affine")
 
 
-def cifradoMezcla():
-    respuesta = "Imprimir cifrado Mezcla"
+def cifradoMezcla(mensaje):
+    respuesta = "\nCifrado Mezcla: " + cifrar_mezcla(mensaje,3,23,5)
     mostrarEncrypt.insert(tk.END, respuesta)
     print("Sirve el cifrado Mezcla")
 
 
-
-
-
+##PARTE GRAFICA##
 root=tk.Tk() 
 root.title("Proyecto LP Encriptación")
 root.geometry("1080x720") #Se asigna los valores de ancho y largo de la ventana
@@ -74,10 +67,10 @@ boton.pack()
 boton1 = tk.Button(root,text="Motrar Cifrado CESAR", command=lambda:cifradoCesar(palabras))
 boton1.pack()
 
-boton2 = tk.Button(root,text="Buscar Cifrado Affline", command=lambda:cifradoAffline)
+boton2 = tk.Button(root,text="Buscar Cifrado Affine", command=lambda:cifradoAffline(palabras))
 boton2.pack()
 
-boton3 = tk.Button(root,text="Buscar Cifrado Mezcla", command=lambda:cifradoMezcla)
+boton3 = tk.Button(root,text="Buscar Cifrado Mezcla", command=lambda:cifradoMezcla(palabras))
 boton3.pack()
 
 frame_rpta = tk.Frame(root)
@@ -102,8 +95,6 @@ scrollbar_encrypt_x.config(command=mostrarEncrypt.xview)
 mostrarEncrypt.pack(side=tk.LEFT, expand=True, fill=tk.BOTH)
 scrollbar_encrypt_y.pack(side=tk.RIGHT, fill=tk.Y)
 scrollbar_encrypt_x.pack(side=tk.BOTTOM, fill=tk.X)
-
-
 
 
 root.mainloop() #El mainloop sirve para mantener abierta la ventana y actualizar lo que ocurra dentro de esta
