@@ -3,7 +3,9 @@ import tkinter as tk #Se importa tkinter y se le asigna el nombre de TK
 from tkinter import filedialog as FileSearch
 from tkinter import messagebox as Message
 import csv
+from cifCesar import cifrar_cesar
 
+palabras = ["a"]
 
 def leer_csv():
     file_path = FileSearch.askopenfilename(
@@ -14,7 +16,7 @@ def leer_csv():
 
     with open(file_path, newline="") as csvfile:
         reader= csv.reader(csvfile)
-        palabras = []
+        global palabras
         for row in reader:
             palabras.append(row[0])
 
@@ -30,11 +32,12 @@ def leer_csv():
     
     
     print("Prueba de botón")
+    print(palabras)
 
 
 
-def cifradoCesar():
-    respuesta = "Imprimir cifrado cesar\n"
+def cifradoCesar(mensaje):
+    respuesta = cifrar_cesar(mensaje, 3)
     mostrarEncrypt.insert(tk.END, respuesta)
     print("Sirve el cifrado cesar")
     ##LUEGO DE PRESIONAR EL BOTON QUE LLAMA A LA FUNCIÓN DEBE CREAR UN ARCHIVO CSV  
@@ -56,6 +59,7 @@ def cifradoMezcla():
 
 
 
+
 root=tk.Tk() 
 root.title("Proyecto LP Encriptación")
 root.geometry("1080x720") #Se asigna los valores de ancho y largo de la ventana
@@ -67,13 +71,13 @@ etiqueta.pack() #el .pack hace que se muestre la variable en la que se aplicó
 boton = tk.Button(root,text="Buscar archivo", command=leer_csv)
 boton.pack()
 
-boton1 = tk.Button(root,text="Motrar Cifrado CESAR", command=cifradoCesar)
+boton1 = tk.Button(root,text="Motrar Cifrado CESAR", command=lambda:cifradoCesar(palabras))
 boton1.pack()
 
-boton2 = tk.Button(root,text="Buscar Cifrado Affline", command=cifradoAffline)
+boton2 = tk.Button(root,text="Buscar Cifrado Affline", command=lambda:cifradoAffline)
 boton2.pack()
 
-boton3 = tk.Button(root,text="Buscar Cifrado Mezcla", command=cifradoMezcla)
+boton3 = tk.Button(root,text="Buscar Cifrado Mezcla", command=lambda:cifradoMezcla)
 boton3.pack()
 
 frame_rpta = tk.Frame(root)

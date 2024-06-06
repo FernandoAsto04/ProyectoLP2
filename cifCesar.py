@@ -10,12 +10,13 @@ def desplazar_letra(letra, desplazamiento):
     else:
         return letra
 
-def cifrar_cesar(mensaje, desplazamiento):
-    mensaje_cifrado = map(lambda letra: desplazar_letra(letra, desplazamiento), mensaje)
+def cifrar_cesar(arreglo, desplazamiento):
+    palabras = map(lambda palabra: ''.join(palabra), arreglo)
+    mensaje_cifrado = map(lambda letra: desplazar_letra(letra, desplazamiento), palabras)
     return ''.join(mensaje_cifrado)
 
 # Prueba de la función
-mensaje = "hola mundo"
-desplazamiento = 3
-mensaje_cifrado = cifrar_cesar(mensaje, desplazamiento)
-print(mensaje_cifrado)  # Salida: "krod pxqgr"
+#mensaje = "hola mundo"
+#desplazamiento = 3
+#mensaje_cifrado = cifrar_cesar(mensaje, desplazamiento)
+#print(mensaje_cifrado)  # Salida: "krod pxqgr"
