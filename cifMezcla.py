@@ -43,12 +43,3 @@ def cifrar_mezcla(mensaje, desplazamiento_cesar, a, b):
     mensaje_cifrado_cesar = cifrar_cesar(mensaje, desplazamiento_cesar)
     mensaje_cifrado_mezcla = cifrar_affine(mensaje_cifrado_cesar, a, b)
     return mensaje_cifrado_mezcla
-
-# Prueba de la función
-mensaje = "hola mundo"
-desplazamiento_cesar = 3
-a = 23
-b = 5
-
-mensaje_cifrado_mezcla = cifrar_mezcla(mensaje, desplazamiento_cesar, a, b)
-print(mensaje_cifrado_mezcla)  # La salida será un mensaje cifrado

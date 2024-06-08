@@ -2,8 +2,13 @@ import os
 import tkinter as tk #Se importa tkinter y se le asigna el nombre de TK
 from tkinter import filedialog as FileSearch
 from tkinter import messagebox as Message
+from cifCesar import *
+from cifAffine import *
+from cifMezcla import *
+
 import csv
 
+palabras=[]
 
 def leer_csv():
     file_path = FileSearch.askopenfilename(
@@ -14,7 +19,7 @@ def leer_csv():
 
     with open(file_path, newline="") as csvfile:
         reader= csv.reader(csvfile)
-        palabras = []
+        
         for row in reader:
             palabras.append(row[0])
 
@@ -26,30 +31,59 @@ def leer_csv():
 
             contador = contador + 1
 
-
-    
-    
     print("Prueba de botón")
 
 
 
 def cifradoCesar():
+    with open('cifrado_Cesar.csv', 'w', newline='') as csvfile:
+        csv_writer = csv.writer(csvfile)
+        i=0
+        while i < len(palabras):
+            desplazamiento = 3
+            result = cifrar_cesar(palabras[i], desplazamiento)
+            csv_writer.writerow([result])  # Escribe el resultado cifrado en una fila en el archivo CSV 🫡🫡🫡🫡🫡(Mensaje puesto para que cierta persona entienda)
+            mostrarEncrypt.insert(tk.END, result)
+            mostrarEncrypt.insert(tk.END, "\n")
+            i = i + 1
+
+##########Lo de abajo ya no sirve
     respuesta = "Imprimir cifrado cesar\n"
-    mostrarEncrypt.insert(tk.END, respuesta)
     print("Sirve el cifrado cesar")
     ##LUEGO DE PRESIONAR EL BOTON QUE LLAMA A LA FUNCIÓN DEBE CREAR UN ARCHIVO CSV  
 
-
-
-def cifradoAffline():
+def cifradoAffine():
+    with open('cifrado_Affine.csv', 'w',newline='') as csvfile:
+        csv_writer = csv.writer(csvfile)
+        i=0
+        while i<len(palabras):
+            a=23
+            b=5
+            result = cifrar_affine(palabras[i],a,b)
+            csv_writer.writerow([result])
+            mostrarEncrypt.insert(tk.END, result)
+            mostrarEncrypt.insert(tk.END, "\n")
+            i=i+1
+##########Lo de abajo ya no sirve
     respuesta = "Imprimir cifrado Affine\n"
     mostrarEncrypt.insert(tk.END, respuesta)
-    respuesta.pack()
     print("Sirve el cifrado Affline")
 
-
 def cifradoMezcla():
-    respuesta = "Imprimir cifrado Mezcla"
+    with open('cifrado_Mezcla.csv', 'w',newline='') as csvfile:
+        csv_writer = csv.writer(csvfile)
+        i=0
+        while i < len(palabras):
+            a=23
+            b=5
+            desplazamiento = 3
+            result = cifrar_mezcla(palabras[i],desplazamiento,a,b)
+            csv_writer.writerow([result])
+            mostrarEncrypt.insert(tk.END, result)
+            mostrarEncrypt.insert(tk.END, "\n")
+            i=i+1
+
+    respuesta = "Cifrado Mezcla"
     mostrarEncrypt.insert(tk.END, respuesta)
     print("Sirve el cifrado Mezcla")
 
@@ -67,10 +101,10 @@ etiqueta.pack() #el .pack hace que se muestre la variable en la que se aplicó
 boton = tk.Button(root,text="Buscar archivo", command=leer_csv)
 boton.pack()
 
-boton1 = tk.Button(root,text="Motrar Cifrado CESAR", command=cifradoCesar)
+boton1 = tk.Button(root,text="Motrar Cifrado Cesar", command=cifradoCesar)
 boton1.pack()
 
-boton2 = tk.Button(root,text="Buscar Cifrado Affline", command=cifradoAffline)
+boton2 = tk.Button(root,text="Buscar Cifrado Affine", command=cifradoAffine)
 boton2.pack()
 
 boton3 = tk.Button(root,text="Buscar Cifrado Mezcla", command=cifradoMezcla)
@@ -80,7 +114,7 @@ frame_rpta = tk.Frame(root)
 frame_rpta.pack(expand=True, fill=tk.BOTH)
 scrollbar_rpta_y = tk.Scrollbar(frame_rpta, orient=tk.VERTICAL)
 scrollbar_rpta_x = tk.Scrollbar(root, orient=tk.HORIZONTAL)
-mostrarRpta = tk.Text(frame_rpta, height=15, width=25, wrap=tk.NONE, yscrollcommand=scrollbar_rpta_y.set, xscrollcommand=scrollbar_rpta_x.set)
+mostrarRpta = tk.Text(frame_rpta, height=15, width=15, wrap=tk.NONE, yscrollcommand=scrollbar_rpta_y.set, xscrollcommand=scrollbar_rpta_x.set)
 scrollbar_rpta_y.config(command=mostrarRpta.yview)
 scrollbar_rpta_x.config(command=mostrarRpta.xview)
 mostrarRpta.pack(side=tk.LEFT, expand=True, fill=tk.BOTH)
@@ -98,7 +132,6 @@ scrollbar_encrypt_x.config(command=mostrarEncrypt.xview)
 mostrarEncrypt.pack(side=tk.LEFT, expand=True, fill=tk.BOTH)
 scrollbar_encrypt_y.pack(side=tk.RIGHT, fill=tk.Y)
 scrollbar_encrypt_x.pack(side=tk.BOTTOM, fill=tk.X)
-
 
 
 

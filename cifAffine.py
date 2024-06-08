@@ -26,10 +26,3 @@ def cifrar_affine(mensaje, a, b):
         raise ValueError(f"{a} y {m} no son coprimos, elige un 'a' diferente.")
     mensaje_cifrado = map(lambda letra: cifrado_affine(letra, a, b), mensaje)
     return ''.join(mensaje_cifrado)
-
-# Prueba de la función
-mensaje = "krod pxqgr"
-a = 23
-b = 5
-mensaje_cifrado = cifrar_affine(mensaje, a, b)
-print(mensaje_cifrado)  # La salida será un mensaje cifrado
