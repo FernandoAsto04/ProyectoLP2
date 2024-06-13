@@ -26,67 +26,61 @@ def leer_csv():
         contador = 0
         while contador < len(palabras):
             print(palabras[contador])
-            mostrarRpta.insert(tk.END,palabras[contador] + "\n")##Solo sirve este codigo lo demás esta de relleno
+            mostrarRpta.insert(tk.END,palabras[contador] + "\n")
             print("\n")
 
             contador = contador + 1
-
-    print("Prueba de botón")
-
 
 
 def cifradoCesar():
     with open('cifrado_Cesar.csv', 'w', newline='') as csvfile:
         csv_writer = csv.writer(csvfile)
         i=0
+        mostrarEncrypt.insert(tk.END, "Cifrado Cesar: \n")
         while i < len(palabras):
             desplazamiento = 3
             result = cifrar_cesar(palabras[i], desplazamiento)
-            csv_writer.writerow([result])  # Escribe el resultado cifrado en una fila en el archivo CSV 🫡🫡🫡🫡🫡(Mensaje puesto para que cierta persona entienda)
-            mostrarEncrypt.insert(tk.END, result)
-            mostrarEncrypt.insert(tk.END, "\n")
+            csv_writer.writerow([result])  # Escribe el resultado cifrado en una fila en el archivo CSV
+            mostrarEncrypt.insert(tk.END, result + "\n")
             i = i + 1
-
-##########Lo de abajo ya no sirve
-    respuesta = "Imprimir cifrado cesar\n"
+        mostrarEncrypt.insert(tk.END,"\n")
+    # Verificacion en la terminal de que si llama a la funcion 
     print("Sirve el cifrado cesar")
-    ##LUEGO DE PRESIONAR EL BOTON QUE LLAMA A LA FUNCIÓN DEBE CREAR UN ARCHIVO CSV  
+
 
 def cifradoAffine():
     with open('cifrado_Affine.csv', 'w',newline='') as csvfile:
         csv_writer = csv.writer(csvfile)
         i=0
+        mostrarEncrypt.insert(tk.END, "Cifrado Affine: \n")
         while i<len(palabras):
             a=23
             b=5
             result = cifrar_affine(palabras[i],a,b)
             csv_writer.writerow([result])
-            mostrarEncrypt.insert(tk.END, result)
-            mostrarEncrypt.insert(tk.END, "\n")
+            mostrarEncrypt.insert(tk.END, result + "\n")
             i=i+1
-##########Lo de abajo ya no sirve
-    respuesta = "Imprimir cifrado Affine\n"
-    mostrarEncrypt.insert(tk.END, respuesta)
-    print("Sirve el cifrado Affline")
+        mostrarEncrypt.insert(tk.END,"\n")
+    
+    # Verificacion en la terminal de que si llama a la funcion
+    print("Sirve el cifrado Affine")
 
 def cifradoMezcla():
     with open('cifrado_Mezcla.csv', 'w',newline='') as csvfile:
         csv_writer = csv.writer(csvfile)
         i=0
+        mostrarEncrypt.insert(tk.END, "Cifrado Mezcla: \n")
         while i < len(palabras):
             a=23
             b=5
             desplazamiento = 3
             result = cifrar_mezcla(palabras[i],desplazamiento,a,b)
             csv_writer.writerow([result])
-            mostrarEncrypt.insert(tk.END, result)
-            mostrarEncrypt.insert(tk.END, "\n")
+            mostrarEncrypt.insert(tk.END, result + "\n")
             i=i+1
 
-    respuesta = "Cifrado Mezcla"
-    mostrarEncrypt.insert(tk.END, respuesta)
+    # Verificacion en la terminal de que si llama a la funcion
     print("Sirve el cifrado Mezcla")
-
 
 
 

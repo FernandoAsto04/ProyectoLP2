@@ -1,5 +1,4 @@
 import string
-from math import gcd
 
 alfabeto = list(string.ascii_lowercase)
 
