@@ -29,7 +29,7 @@ def leer_csv():
             print("\n")
             contador = contador + 1
 
-
+#En esta función se utiliza cifCesar.py para encriptar las palabras que se encuentren dentro del csv así como mostrarlas en la interfaz
 def cifradoCesar():
     with open('cifrado_Cesar.csv', 'w', newline='') as csvfile:
         csv_writer = csv.writer(csvfile)
@@ -37,12 +37,12 @@ def cifradoCesar():
         while i < len(palabras):
             desplazamiento = 3
             result = cifrar_cesar(palabras[i], desplazamiento)
-            csv_writer.writerow([result])  # Escribe el resultado cifrado en una fila en el archivo CSV 🫡🫡🫡🫡🫡(Mensaje puesto para que cierta persona entienda)
+            csv_writer.writerow([result])
             mostrarEncrypt.insert(tk.END, result)
             mostrarEncrypt.insert(tk.END, "\n")
             i = i + 1
 
-
+#En esta función se utiliza cifAffine.py para encriptar las palabras que se encuentren dentro del csv así como mostrarlas en la interfaz
 def cifradoAffine():
     with open('cifrado_Affine.csv', 'w',newline='') as csvfile:
         csv_writer = csv.writer(csvfile)
@@ -56,7 +56,7 @@ def cifradoAffine():
             mostrarEncrypt.insert(tk.END, "\n")
             i=i+1
 
-
+#Esta función utiliza el contenido de cifMezcla.py para encriptar las palabras que se encuentran dentro del csv y mostrarlas en la interfaz
 def cifradoMezcla():
     with open('cifrado_Mezcla.csv', 'w',newline='') as csvfile:
         csv_writer = csv.writer(csvfile)
@@ -72,14 +72,12 @@ def cifradoMezcla():
             i=i+1
 
 #Código de la interfaz, en esta parte está incluido el código orientado a eventos
+#Creación de la interfaz y sus dimensiones
 root=tk.Tk() 
 root.title("Proyecto LP Encriptación")
-root.geometry("1080x720") #Se asigna los valores de ancho y largo de la ventana
+root.geometry("1080x720")
 
-etiqueta = tk.Label(root, text="Texto de prueba")
-etiqueta.pack() #el .pack hace que se muestre la variable en la que se aplicó
-
-
+#Creación de los botones de la interfaz, a cada botón se le asignó un evento a ejecutarse tras presionar el botón
 boton = tk.Button(root,text="Buscar archivo", command=leer_csv)
 boton.pack()
 
@@ -92,6 +90,7 @@ boton2.pack()
 boton3 = tk.Button(root,text="Buscar Cifrado Mezcla", command=cifradoMezcla)
 boton3.pack()
 
+#Creación de la barras de scroll y cajas de texto en las que se imprimen las palabras contenidas en el csv y las palabras cifradas
 frame_rpta = tk.Frame(root)
 frame_rpta.pack(expand=True, fill=tk.BOTH)
 scrollbar_rpta_y = tk.Scrollbar(frame_rpta, orient=tk.VERTICAL)
