@@ -1,21 +1,20 @@
-import os
-import tkinter as tk #Se importa tkinter y se le asigna el nombre de TK
+#Se importan las librerías y archivos necesarios
+import tkinter as tk 
 from tkinter import filedialog as FileSearch
 from tkinter import messagebox as Message
 from cifCesar import *
 from cifAffine import *
 from cifMezcla import *
-
 import csv
 
-palabras=[]
 
+palabras=[]
+#Esta función abre una ventana de busqueda para seleccionar una archivo csv
 def leer_csv():
     file_path = FileSearch.askopenfilename(
         title="Selecciona el archivo",
         filetypes=(("Archivos CSV", "*.csv*"),)
         )
-    #El punto csv ayuda a filtrar los archivos
 
     with open(file_path, newline="") as csvfile:
         reader= csv.reader(csvfile)
@@ -26,13 +25,9 @@ def leer_csv():
         contador = 0
         while contador < len(palabras):
             print(palabras[contador])
-            mostrarRpta.insert(tk.END,palabras[contador] + "\n")##Solo sirve este codigo lo demás esta de relleno
+            mostrarRpta.insert(tk.END,palabras[contador] + "\n")
             print("\n")
-
             contador = contador + 1
-
-    print("Prueba de botón")
-
 
 
 def cifradoCesar():
@@ -47,10 +42,6 @@ def cifradoCesar():
             mostrarEncrypt.insert(tk.END, "\n")
             i = i + 1
 
-##########Lo de abajo ya no sirve
-    respuesta = "Imprimir cifrado cesar\n"
-    print("Sirve el cifrado cesar")
-    ##LUEGO DE PRESIONAR EL BOTON QUE LLAMA A LA FUNCIÓN DEBE CREAR UN ARCHIVO CSV  
 
 def cifradoAffine():
     with open('cifrado_Affine.csv', 'w',newline='') as csvfile:
@@ -64,10 +55,7 @@ def cifradoAffine():
             mostrarEncrypt.insert(tk.END, result)
             mostrarEncrypt.insert(tk.END, "\n")
             i=i+1
-##########Lo de abajo ya no sirve
-    respuesta = "Imprimir cifrado Affine\n"
-    mostrarEncrypt.insert(tk.END, respuesta)
-    print("Sirve el cifrado Affline")
+
 
 def cifradoMezcla():
     with open('cifrado_Mezcla.csv', 'w',newline='') as csvfile:
@@ -83,13 +71,7 @@ def cifradoMezcla():
             mostrarEncrypt.insert(tk.END, "\n")
             i=i+1
 
-    respuesta = "Cifrado Mezcla"
-    mostrarEncrypt.insert(tk.END, respuesta)
-    print("Sirve el cifrado Mezcla")
-
-
-
-
+#Código de la interfaz, en esta parte está incluido el código orientado a eventos
 root=tk.Tk() 
 root.title("Proyecto LP Encriptación")
 root.geometry("1080x720") #Se asigna los valores de ancho y largo de la ventana
