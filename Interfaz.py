@@ -34,6 +34,7 @@ def cifradoCesar():
     with open('cifrado_Cesar.csv', 'w', newline='') as csvfile:
         csv_writer = csv.writer(csvfile)
         i=0
+        mostrarEncrypt.insert(tk.END, "Cifrado César: " + "\n")
         while i < len(palabras):
             desplazamiento = 3
             result = cifrar_cesar(palabras[i], desplazamiento)
@@ -41,12 +42,14 @@ def cifradoCesar():
             mostrarEncrypt.insert(tk.END, result)
             mostrarEncrypt.insert(tk.END, "\n")
             i = i + 1
+        mostrarEncrypt.insert(tk.END, "\n")
 
 #En esta función se utiliza cifAffine.py para encriptar las palabras que se encuentren dentro del csv así como mostrarlas en la interfaz
 def cifradoAffine():
     with open('cifrado_Affine.csv', 'w',newline='') as csvfile:
         csv_writer = csv.writer(csvfile)
         i=0
+        mostrarEncrypt.insert(tk.END, "Cifrado Affine: " + "\n")
         while i<len(palabras):
             a=23
             b=5
@@ -55,12 +58,14 @@ def cifradoAffine():
             mostrarEncrypt.insert(tk.END, result)
             mostrarEncrypt.insert(tk.END, "\n")
             i=i+1
+        mostrarEncrypt.insert(tk.END, "\n")
 
 #Esta función utiliza el contenido de cifMezcla.py para encriptar las palabras que se encuentran dentro del csv y mostrarlas en la interfaz
 def cifradoMezcla():
     with open('cifrado_Mezcla.csv', 'w',newline='') as csvfile:
         csv_writer = csv.writer(csvfile)
         i=0
+        mostrarEncrypt.insert(tk.END, "Cifrado Mezcla: " + "\n")
         while i < len(palabras):
             a=23
             b=5
@@ -70,6 +75,7 @@ def cifradoMezcla():
             mostrarEncrypt.insert(tk.END, result)
             mostrarEncrypt.insert(tk.END, "\n")
             i=i+1
+        mostrarEncrypt.insert(tk.END, "\n")
 
 #Código de la interfaz, en esta parte está incluido el código orientado a eventos
 #Creación de la interfaz y sus dimensiones
