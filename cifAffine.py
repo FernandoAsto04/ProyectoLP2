@@ -1,5 +1,4 @@
 import string
-from math import gcd
 #Código del cifrado Affine hecho con funciones de alto orden y lambda
 alfabeto = list(string.ascii_lowercase)
 

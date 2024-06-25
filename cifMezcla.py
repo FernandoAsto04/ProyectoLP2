@@ -1,4 +1,3 @@
-import string
 from cifCesar import *
 from cifAffine import *
 
