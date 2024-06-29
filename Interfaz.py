@@ -104,26 +104,17 @@ boton3.pack()
 frame_rpta = tk.Frame(root)
 frame_rpta.pack(expand=True, fill=tk.BOTH)
 scrollbar_rpta_y = tk.Scrollbar(frame_rpta, orient=tk.VERTICAL)
-scrollbar_rpta_x = tk.Scrollbar(root, orient=tk.HORIZONTAL)
-mostrarRpta = tk.Text(frame_rpta, height=15, width=15, wrap=tk.NONE, yscrollcommand=scrollbar_rpta_y.set, xscrollcommand=scrollbar_rpta_x.set)
+mostrarRpta = tk.Text(frame_rpta, height=15, width=15, wrap=tk.NONE, yscrollcommand=scrollbar_rpta_y.set)
 scrollbar_rpta_y.config(command=mostrarRpta.yview)
-scrollbar_rpta_x.config(command=mostrarRpta.xview)
 mostrarRpta.pack(side=tk.LEFT, expand=True, fill=tk.BOTH)
 scrollbar_rpta_y.pack(side=tk.RIGHT, fill=tk.Y)
-scrollbar_rpta_x.pack(side=tk.BOTTOM, fill=tk.X)
-
 
 frame_encrypt = tk.Frame(root)
 frame_encrypt.pack(expand=True, fill=tk.BOTH)
 scrollbar_encrypt_y = tk.Scrollbar(frame_encrypt, orient=tk.VERTICAL)
-scrollbar_encrypt_x = tk.Scrollbar(root, orient=tk.HORIZONTAL)
-mostrarEncrypt = tk.Text(frame_encrypt, height=15, width=50, wrap=tk.NONE, yscrollcommand=scrollbar_encrypt_y.set, xscrollcommand=scrollbar_encrypt_x.set)
+mostrarEncrypt = tk.Text(frame_encrypt, height=15, width=50, wrap=tk.NONE, yscrollcommand=scrollbar_encrypt_y.set)
 scrollbar_encrypt_y.config(command=mostrarEncrypt.yview)
-scrollbar_encrypt_x.config(command=mostrarEncrypt.xview)
 mostrarEncrypt.pack(side=tk.LEFT, expand=True, fill=tk.BOTH)
 scrollbar_encrypt_y.pack(side=tk.RIGHT, fill=tk.Y)
-scrollbar_encrypt_x.pack(side=tk.BOTTOM, fill=tk.X)
-
-
 
 root.mainloop() #El mainloop sirve para mantener abierta la ventana y actualizar lo que ocurra dentro de esta
