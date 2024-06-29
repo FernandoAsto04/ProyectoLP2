@@ -14,3 +14,5 @@ def desplazar_letra(letra, desplazamiento):
 def cifrar_cesar(mensaje, desplazamiento):
     mensaje_cifrado = map(lambda letra: desplazar_letra(letra, desplazamiento), mensaje)
     return ''.join(mensaje_cifrado)
+
+#Implementado por Fernando Asto

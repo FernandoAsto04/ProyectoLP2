@@ -7,7 +7,7 @@ from cifAffine import *
 from cifMezcla import *
 import csv
 
-
+#Implementado por Fernando Asto
 palabras=[]
 #Esta función abre una ventana de busqueda para seleccionar una archivo csv
 def leer_csv():
@@ -29,6 +29,7 @@ def leer_csv():
             print("\n")
             contador = contador + 1
 
+#Implementado por Valeria Neira
 #En esta función se utiliza cifCesar.py para encriptar las palabras que se encuentren dentro del csv así como mostrarlas en la interfaz
 def cifradoCesar():
     with open('cifrado_Cesar.csv', 'w', newline='') as csvfile:
@@ -44,6 +45,7 @@ def cifradoCesar():
             i = i + 1
         mostrarEncrypt.insert(tk.END, "\n")
 
+#Implementado por Valeria Neira
 #En esta función se utiliza cifAffine.py para encriptar las palabras que se encuentren dentro del csv así como mostrarlas en la interfaz
 def cifradoAffine():
     with open('cifrado_Affine.csv', 'w',newline='') as csvfile:
@@ -60,6 +62,7 @@ def cifradoAffine():
             i=i+1
         mostrarEncrypt.insert(tk.END, "\n")
 
+#Implementado por Valeria Neira
 #Esta función utiliza el contenido de cifMezcla.py para encriptar las palabras que se encuentran dentro del csv y mostrarlas en la interfaz
 def cifradoMezcla():
     with open('cifrado_Mezcla.csv', 'w',newline='') as csvfile:
@@ -77,6 +80,7 @@ def cifradoMezcla():
             i=i+1
         mostrarEncrypt.insert(tk.END, "\n")
 
+#Toda la interfaz fue implementada por Kimberly Chavez
 #Código de la interfaz, en esta parte está incluido el código orientado a eventos
 #Creación de la interfaz y sus dimensiones
 root=tk.Tk() 

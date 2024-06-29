@@ -14,3 +14,5 @@ def cifrado_affine(letra, a, b):
 def cifrar_affine(mensaje, a, b):
     mensaje_cifrado = map(lambda letra: cifrado_affine(letra, a, b), mensaje)
     return ''.join(mensaje_cifrado)
+
+#Implementado por Fernando Asto
